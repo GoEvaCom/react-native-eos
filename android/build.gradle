@@ -1,0 +1,116 @@
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.3.1'
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 26
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    lintOptions {
+        abortOnError false
+    }
+    buildToolsVersion "28.0.3"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+ext {
+    espressoVer = '2.2.2'
+    supportLibVer = '27.0.2'
+    constraintLayoutVer = '1.0.2'
+    roomVer = '1.0.0'
+
+    rxJavaVer = '2.1.2'
+    rxAndroidVer='2.0.1'
+
+    retrofitVer = '2.3.0'
+    okHttpVer   = '3.9.0'
+
+    gsonVer = '2.8.1'
+
+    dagger2Ver = '2.11'
+
+    timberVer = '4.5.1'
+
+    fileChooserrVer = '1.3'
+    singleDateTimePickerVer = '1.2.2'
+
+    consoleViewVer = '0.4.3'
+
+    junitVer = '4.12'
+}
+dependencies {
+    implementation 'com.android.support:multidex:1.0.0'
+    implementation 'com.facebook.react:react-native:+'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:${espressoVer}", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    // support lib, constraint layout
+    implementation "com.android.support:appcompat-v7:${supportLibVer}"
+    implementation "com.android.support:recyclerview-v7:${supportLibVer}"
+    implementation "com.android.support:cardview-v7:${supportLibVer}"
+    implementation "com.android.support:design:${supportLibVer}"
+    implementation "com.android.support:support-vector-drawable:${supportLibVer}"
+    implementation "com.android.support.constraint:constraint-layout:${constraintLayoutVer}"
+
+    // ReactiveX 설정
+    implementation "io.reactivex.rxjava2:rxandroid:${rxAndroidVer}"
+    implementation "io.reactivex.rxjava2:rxjava:${rxJavaVer}"
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:${retrofitVer}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofitVer}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofitVer}"
+
+    implementation "com.google.code.gson:gson:${gsonVer}"
+
+    // okHttp
+    implementation "com.squareup.okhttp3:okhttp:${okHttpVer}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${okHttpVer}"
+
+    // room
+    implementation "android.arch.persistence.room:runtime:${roomVer}"
+    annotationProcessor "android.arch.persistence.room:compiler:${roomVer}"
+    implementation "android.arch.persistence.room:rxjava2:${roomVer}"
+
+
+    // Dagger dependencies
+    implementation "com.google.dagger:dagger:${dagger2Ver}"
+    implementation "com.google.dagger:dagger-android-support:${dagger2Ver}"
+    annotationProcessor "com.google.dagger:dagger-android-processor:${dagger2Ver}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${dagger2Ver}"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:${timberVer}"
+
+
+    // single date time picker
+    implementation "com.github.florent37:singledateandtimepicker:${singleDateTimePickerVer}"
+
+    implementation "com.jraska:console:${consoleViewVer}"
+
+    testImplementation "junit:junit:${junitVer}"
+}
+  
