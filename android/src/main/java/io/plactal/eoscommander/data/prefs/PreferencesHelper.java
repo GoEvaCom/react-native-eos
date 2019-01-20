@@ -76,6 +76,11 @@ public class PreferencesHelper {
         mWalletDirFile.mkdirs();
     }
 
+    public PreferencesHelper(){
+        mPrefs = null;
+        mWalletDirFile = null;
+    }
+
     public void clear() {
         mPrefs.edit().clear().apply();
     }

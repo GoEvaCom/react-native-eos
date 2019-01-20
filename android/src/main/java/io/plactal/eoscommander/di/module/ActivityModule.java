@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import dagger.Module;
 import dagger.Provides;
-import io.plactal.eoscommander.ui.CmdPagerAdapter;
 import io.plactal.eoscommander.di.ActivityContext;
 
 /**
@@ -28,8 +27,4 @@ public class ActivityModule {
         return mActivity;
     }
 
-    @Provides
-    CmdPagerAdapter provideCmdPagerAdapter(AppCompatActivity activity) {
-        return new CmdPagerAdapter( activity ) ;
-    }
 }

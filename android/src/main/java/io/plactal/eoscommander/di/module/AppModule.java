@@ -23,7 +23,6 @@ import io.plactal.eoscommander.di.ApplicationContext;
 import io.plactal.eoscommander.util.RefValue;
 import io.plactal.eoscommander.util.StringUtils;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -35,15 +34,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AppModule {
 
     private final Application mApp;
+    private final Context context;
 
-    public AppModule( Application application) { mApp = application;}
+    public AppModule( Application application, Context context) { mApp = application; this.context = context; }
 
     @Provides
     Application provideApp() { return mApp; }
 
     @Provides
     @ApplicationContext
-    Context provideAppContext() { return mApp; }
+    Context provideAppContext() { return this.context; }
 
 
     @Provides

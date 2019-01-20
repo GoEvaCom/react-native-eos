@@ -192,7 +192,6 @@ public class EoscDataManager {
         Action action = new Action(contract, actionName);
         action.setAuthorization(permissions);
         action.setData( dataAsHex );
-        System.out.println("createTransactionWithPrivateKey! " + privateKey);
 
         SignedTransaction txn = new SignedTransaction();
         txn.setPrivKey(privateKey);
