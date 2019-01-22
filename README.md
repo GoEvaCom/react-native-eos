@@ -9,7 +9,7 @@ However, in production mode on a cellphone, the ecc signing  is way too slow bec
 
 
 # Performance
-According to our tests, the signature goes much faster on both Android and iOS.
+According to our tests, the signature goes much faster on both Android and iOS. Tests are ran in production without the js debugger open (it uses the core-js from the computer instead of the device).
 
 
 | Platform      | eosjs browserify | react-native-eos  |
