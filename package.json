@@ -1,6 +1,6 @@
 
 {
-  "name": "react-native-eos-ecc",
+  "name": "react-native-eos",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,10 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "react-native"
+    "react-native", "eva", "eos", "native", "ecc", "client", "blockchain"
   ],
-  "author": "",
-  "license": "",
+  "author": "Eva Foundation",
+  "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.41.2"
   }

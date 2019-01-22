@@ -1,6 +1,7 @@
 
 import { NativeModules } from 'react-native';
-
 const { RNEosEcc } = NativeModules;
 
-export default RNEosEcc;
+let ReactNativeEos = RNEosEcc;
+
+export default ReactNativeEos;

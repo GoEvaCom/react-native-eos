@@ -1,0 +1,21 @@
+//
+//  Bridging-Header.h
+//  SwiftyEOS
+//
+//  Created by croath on 2018/5/8.
+//  Copyright © 2018 Eva Foundation. All rights reserved.
+//
+
+#ifndef Bridging_Header_h
+#define Bridging_Header_h
+
+#import "React/RCTBridgeModule.h"
+#import "CommonCrypto/CommonCrypto.h"
+#import "CommonCrypto/CommonHMAC.h"
+#import "libbase58.h"
+#import "uECC.h"
+#import "bip32.h"
+#import "bip39.h"
+#import "ripemd160.h"
+
+#endif /* Bridging_Header_h */
