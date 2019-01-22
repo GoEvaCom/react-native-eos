@@ -1,10 +1,12 @@
 React-Native EOS
 
-At eva coop, we used to browserify eosjs in order to sign transactions. However, ion production on a cellphone, it is way too slow, especially on older phones. In order to diminish the signing time, we had to write an android and iOS implementation with an API for react-native.
+At eva coop, we used to browserify eosjs in order to sign transactions. Block.one also recently made their eosjs copmpatible with React-Native because it is really convenient.
+
+However, in production mode on a cellphone, the ecc signing  is way too slow because of the javascript browserfying and polyfills. In order to diminish the signing time on our app and improve UX, we had to write an android and iOS implementation with an API for react-native.
 
 # Installation notes
 ```
-npm install [...]
+npm install react-native-eos
 react-native link
 ```
 
