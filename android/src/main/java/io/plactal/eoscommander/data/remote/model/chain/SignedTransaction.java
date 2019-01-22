@@ -122,7 +122,6 @@ public class SignedTransaction extends Transaction {
         if ( null == this.signatures){
             this.signatures = new ArrayList<>();
         }
-        System.out.println("privKey! : " + this.privateKey);
         EcSignature signature = EcDsa.sign(getDigestForSignature( chainId ), this.privateKey);
         this.signatures.add( signature.toString());
     }

@@ -40,7 +40,6 @@ public class EosCommanderApp extends Application {
 
         // https://android-developers.googleblog.com/2013/08/some-securerandom-thoughts.html
         PRNGFixes.apply();
-        System.out.println("HELLO TBK");
         mAppComponent = DaggerAppComponent.builder()
                 .appModule( new AppModule(this, reactContext))
                 .build();
@@ -50,8 +49,6 @@ public class EosCommanderApp extends Application {
     }
 
     public void setUrl(String scheme, String url, int port){
-        System.out.println("data manager");
-        System.out.println(mDataManager);
         mDataManager.getPreferenceHelper().putNodeosConnInfo(scheme, url, port);
     }
 
@@ -62,7 +59,6 @@ public class EosCommanderApp extends Application {
                 .subscribe( new Consumer<EosChainInfo>() {
                     @Override
                     public void accept(EosChainInfo info){
-                        System.out.println("info!");
                         System.out.println(info.getChain_id());
                     }
                 });
