@@ -52,6 +52,7 @@ class Entrypoint: NSObject {
                     //reject("ERROR", "ERROR", "ERROR"!)
                 } else {
                     let returnValue = "other error: \(String(describing: error?.localizedDescription))"
+                    print(returnValue)
                     //reject("ERROR", "ERROR", "ERROR"!)
                 }
             } else {

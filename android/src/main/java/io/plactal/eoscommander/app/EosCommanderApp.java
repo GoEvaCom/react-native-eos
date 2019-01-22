@@ -75,11 +75,12 @@ public class EosCommanderApp extends Application {
     public AppComponent getAppComponent() { return mAppComponent; }
 
     public void pushAction(String contract, String action, String message, String permissionAccount, String permissionType, String privateKey, final Promise promise) {
+
         String messageReplaced = message.replaceAll("\\r|\\n","");
         String[] permissions = ( StringUtils.isEmpty(permissionAccount) || StringUtils.isEmpty( permissionType))
                 ? null : new String[]{permissionAccount + "@" + permissionType };
         mDataManager
-                .pushActionNoWallet(contract, action, messageReplaced, permissions, "5J8WRSxpL4nx7bm4yrA2CT6i2X8iVckXKnwV29PC4PPS4V2MC9C")
+                .pushActionNoWallet(contract, action, messageReplaced, permissions, privateKey)
                 .subscribeOn(scheduler.computation())
                 .subscribe( new Consumer<PushTxnResponse>() {
                     @Override
