@@ -2,7 +2,7 @@
 
 At eva coop, we used to browserify and polyfill eosjs in order to sign transactions. Block.one also recently made their eosjs compatible with React-Native using the same method.
 
-However, in production mode on a cellphone, the ecc signing  is way too slow because of the javascript browserfying and polyfills. In order to diminish the signing time on our app and improve UX, we had to write an android and iOS native implementations with an API for react-native.
+However, in production mode on a cellphone, the ecc signing  is way too slow because of the javascript browserfying and polyfills. In order to diminish the signing time on our app and improve UX, we had to implement an android and iOS native implementations with an API for react-native.
 
 # Contributors
 - [Raphael Gaudreault](https://github.com/raphaelgodro)
