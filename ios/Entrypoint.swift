@@ -46,15 +46,7 @@ class Entrypoint: NSObject {
         
         TransactionUtil.pushTransaction(abi: abi, account: myPermissionAccount, privateKey: myPrivateKey!, completion: { (result, error) in
             if error != nil {
-                if (error! as NSError).code == RPCErrorResponse.ErrorCode {
-                    print("\(((error! as NSError).userInfo[RPCErrorResponse.ErrorKey] as! RPCErrorResponse).errorDescription())")
-                    let returnValue = "\(((error! as NSError).userInfo[RPCErrorResponse.ErrorKey] as! RPCErrorResponse).errorDescription())"
-                    //reject("ERROR", "ERROR", "ERROR"!)
-                } else {
-                    let returnValue = "other error: \(String(describing: error?.localizedDescription))"
-                    print(returnValue)
-                    //reject("ERROR", "ERROR", "ERROR"!)
-                }
+                reject("ERROR", "ERROR", error);
             } else {
                 let returnValue = "Ok. Txid: \(result!.transactionId)"
                 resolve(returnValue)

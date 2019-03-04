@@ -28,8 +28,9 @@ public class RNEosEccModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void setUrl(String scheme, String url, int port) {
+  public void setUrl(String scheme, String url, int port, final Promise promise) {
     app.setUrl(scheme, url, port);
+    promise.resolve("Success");
   }
 
   @ReactMethod

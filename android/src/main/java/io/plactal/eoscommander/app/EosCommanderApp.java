@@ -71,20 +71,38 @@ public class EosCommanderApp extends Application {
     public AppComponent getAppComponent() { return mAppComponent; }
 
     public void pushAction(String contract, String action, String message, String permissionAccount, String permissionType, String privateKey, final Promise promise) {
-
         String messageReplaced = message.replaceAll("\\r|\\n","");
         String[] permissions = ( StringUtils.isEmpty(permissionAccount) || StringUtils.isEmpty( permissionType))
                 ? null : new String[]{permissionAccount + "@" + permissionType };
         mDataManager
-                .pushActionNoWallet(contract, action, messageReplaced, permissions, privateKey)
-                .subscribeOn(scheduler.computation())
-                .subscribe( new Consumer<PushTxnResponse>() {
-                    @Override
-                    public void accept(PushTxnResponse pushTxnResponse) throws Exception {
+            .pushActionNoWallet(contract, action, messageReplaced, permissions, privateKey)
+            .subscribeOn(scheduler.computation())
+            .subscribeWith( new Observer<PushTxnResponse>() {
+                @Override
+                public void onSubscribe(Disposable d) {
+
+                }
+
+                @Override
+                public void onNext(PushTxnResponse pushTxnResponse) {
+                    try {
                         Gson gson = new Gson();
                         String pushTxnResponseString = gson.toJson(pushTxnResponse);
                         promise.resolve(pushTxnResponseString);
+                    } catch(Exception e){
+                        promise.reject("ERR_UNEXPECTED_EXCEPTION", e);
                     }
-                });
-    }
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    promise.reject("ERR_UNEXPECTED_EXCEPTION", e);
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            });
+}
 }
