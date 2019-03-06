@@ -1,9 +1,6 @@
 
 #import "RNEosEcc.h"
 
-#import "React/RCTBridgeModule.h"
-
-
 @interface RCT_EXTERN_REMAP_MODULE(RNEosEcc, Entrypoint, NSObject)
 RCT_EXTERN_METHOD(getInfo: (RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(
