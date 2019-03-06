@@ -19,6 +19,8 @@ import io.plactal.eoscommander.di.module.AppModule;
 import io.plactal.eoscommander.util.StringUtils;
 import io.plactal.eoscommander.util.rx.EoscSchedulerProvider;
 import io.reactivex.functions.Consumer;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import timber.log.Timber;
 
 /**
