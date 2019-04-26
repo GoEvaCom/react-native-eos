@@ -35,9 +35,9 @@ func customDateFormatter(_ decoder: Decoder) throws -> Date {
     let dateString = try decoder.singleValueContainer().decode(String.self)
     switch dateString.count {
     case 20..<Int.max:
-        return se_iso8601dateFormatter.date(from: dateString)!
+        return (se_iso8601dateFormatter.date(from: dateString)) ?? Date()
     case 19:
-        return se_iso8601dateFormatterWithoutMilliseconds.date(from: dateString)!
+        return se_iso8601dateFormatterWithoutMilliseconds.date(from: dateString) ?? Date()
     default:
         let dateKey = decoder.codingPath.last
         fatalError("Unexpected date coding key: \(String(describing: dateKey))")
