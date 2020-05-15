@@ -38,7 +38,9 @@ ext {
     espressoVer = '2.2.2'
     supportLibVer = '27.0.2'
     constraintLayoutVer = '1.0.2'
-    roomVer = '1.0.0'
+    roomVer = '2.2.5'
+
+    appcompatVer = '1.1.0'
 
     rxJavaVer = '2.1.2'
     rxAndroidVer='2.0.1'
@@ -84,10 +86,14 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:${okHttpVer}"
 
     // room
-    implementation "android.arch.persistence.room:runtime:${roomVer}"
-    annotationProcessor "android.arch.persistence.room:compiler:${roomVer}"
-    implementation "android.arch.persistence.room:rxjava2:${roomVer}"
+    implementation "androidx.room:room-runtime:${roomVer}"
+    annotationProcessor "androidx.room:room-compiler:${roomVer}"
+    implementation "androidx.room:room-rxjava2:${roomVer}"
 
+    //Appcompat
+    implementation "androidx.appcompat:appcompat:${appcompatVer}"
+    // For loading and tinting drawables on older versions of the platform
+    implementation "androidx.appcompat:appcompat-resources:${appcompatVer}"
 
     // Dagger dependencies
     implementation "com.google.dagger:dagger:${dagger2Ver}"

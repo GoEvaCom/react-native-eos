@@ -1,10 +1,10 @@
 package io.plactal.eoscommander.data.local.db;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Index;
-import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
+import androidx.annotation.NonNull;
 
 /**
  * Created by swapnibble on 2017-12-08.

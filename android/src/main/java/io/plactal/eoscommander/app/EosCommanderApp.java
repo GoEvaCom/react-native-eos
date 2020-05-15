@@ -8,6 +8,8 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.google.gson.Gson;
 
 import javax.inject.Inject;
+import java.lang.StackTraceElement;
+import java.lang.StringBuilder;
 
 import io.plactal.eoscommander.data.EoscDataManager;
 import io.plactal.eoscommander.data.remote.model.api.EosChainInfo;
@@ -22,6 +24,9 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import timber.log.Timber;
+
+import okhttp3.ResponseBody;
+import retrofit2.HttpException;
 
 /**
  * Created by swapnibble on 2017-11-03.
@@ -54,14 +59,14 @@ public class EosCommanderApp extends Application {
         mDataManager.getPreferenceHelper().putNodeosConnInfo(scheme, url, port);
     }
 
-    public void getInfo(){
+    public void getInfo(final Promise promise){
         mDataManager
                 .getChainInfo()
                 .subscribeOn(scheduler.computation())
                 .subscribe( new Consumer<EosChainInfo>() {
                     @Override
                     public void accept(EosChainInfo info){
-                        System.out.println(info.getChain_id());
+                        promise.resolve(info.getBrief());
                     }
                 });
     }
@@ -98,7 +103,17 @@ public class EosCommanderApp extends Application {
 
                 @Override
                 public void onError(Throwable e) {
-                    promise.reject("ERR_UNEXPECTED_EXCEPTION", e);
+                    if (e instanceof HttpException) {
+                        ResponseBody body = ((HttpException) e).response().errorBody();
+                        try {
+                            promise.reject(body.string());
+                        } catch (Exception ex) {
+                            promise.reject("ERR_UNEXPECTED_EXCEPTION: Problem with the blockchain. No info available.");
+                        }
+                    } else {
+                        promise.reject("ERR_UNEXPECTED_EXCEPTION: Not an error with the blockchain. Probably an error in react native code. Please refer to react-native-eos github page for more info.");
+                    }
+                    
                 }
 
                 @Override

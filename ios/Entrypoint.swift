@@ -13,14 +13,14 @@ class Entrypoint: NSObject {
     private var url = "http://localhost:8888"
     
     @objc
-    func getInfo(_ callback: @escaping RCTResponseSenderBlock) {
+    func getInfo(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
         EOSRPC.endpoint = url
         EOSRPC.sharedInstance.chainInfo { (chainInfo, error) in
             if error == nil {
                 let value = "\(chainInfo)"
-                callback(["\(chainInfo!)"])
+                resolve("\(chainInfo!)")
             } else {
-                callback(["error"])
+                reject("\(error)", "\(error)", error);
             }
         }
     }
@@ -40,15 +40,31 @@ class Entrypoint: NSObject {
         let myPermissionAccount = permissionAccount as String
         let myPermissionType = permissionType as String
         let myPrivateKeyString = privateKeyString as String
-        let myPrivateKey = try! PrivateKey(keyString: myPrivateKeyString)
-        EOSRPC.endpoint = url
-        let abi = try! AbiJson(code: myContract, action: myAction, json: myMessage)
+        let myPrivateKey: PrivateKey?
+        let abi: AbiJson?
+
+        //Validate and create Private Key 
+        do {
+            myPrivateKey = try PrivateKey(keyString: myPrivateKeyString)
+        } catch let error {
+            reject("private_key_error", "\(error)", error);
+            return
+        }
+
+        //Validate and create ABI
+        do {
+            abi = try AbiJson(code: myContract, action: myAction, json: myMessage)
+        } catch let error {
+            reject("abi_json_error", "\(error)", error);
+            return
+        }
         
-        TransactionUtil.pushTransaction(abi: abi, account: myPermissionAccount, privateKey: myPrivateKey!, completion: { (result, error) in
+        EOSRPC.endpoint = url
+        TransactionUtil.pushTransaction(abi: abi!, account: myPermissionAccount, privateKey: myPrivateKey!, completion: { (result, error) in
             if error != nil {
-                reject("ERROR", "ERROR", error);
+                reject("blockchain_error", "\(error)", error);
             } else {
-                let returnValue = "Ok. Txid: \(result!.transactionId)"
+                let returnValue = "{\"message\": \"Ok. Txid: \(result!.transactionId)\"}" //response.message (same as Android)
                 resolve(returnValue)
             }
         })

@@ -1,7 +1,7 @@
 package io.plactal.eoscommander.data.local.db;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
 /**
  * Created by swapnibble on 2017-12-11.

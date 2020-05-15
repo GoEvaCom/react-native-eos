@@ -35,7 +35,7 @@ public class RNEosEccModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void getInfo(final Promise promise){
-    app.getInfo();
+    app.getInfo(promise);
   }
 
   @ReactMethod

@@ -58,9 +58,9 @@ ReactNativeEos.setUrl('http', 'localhost', 8888);
 ```
 ### Get chain info
 ```
-ReactNativeEos.getInfo(info => {
-	console.log('info', info);
-});
+ ReactNativeEos.getInfo().then(response => {
+          console.log(response);
+        });
 ```
 ### Send action
 ```
@@ -71,7 +71,7 @@ actionData = {
   "memo": "fast?"
 }
 ReactNativeEos.pushAction('eosio.token','transfer', JSON.stringify(actionData),'eva','active','5KC4AhWMFzRa3xnKDPZTYnmyANG7JDuzrruxAzvxozkTnj9QUjT').then(trxResponse => {
-    console.log('trxResponse', trxResponse);
+    console.log('trxResponse', trxResponse.message);
 });
 ```
 
