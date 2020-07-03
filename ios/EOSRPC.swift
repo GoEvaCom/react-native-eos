@@ -35,9 +35,9 @@ func customDateFormatter(_ decoder: Decoder) throws -> Date {
     let dateString = try decoder.singleValueContainer().decode(String.self)
     switch dateString.count {
     case 20..<Int.max:
-        return (se_iso8601dateFormatter.date(from: dateString)) ?? Date()
+        return se_iso8601dateFormatter.date(from: dateString)!
     case 19:
-        return se_iso8601dateFormatterWithoutMilliseconds.date(from: dateString) ?? Date()
+        return se_iso8601dateFormatterWithoutMilliseconds.date(from: dateString)!
     default:
         let dateKey = decoder.codingPath.last
         fatalError("Unexpected date coding key: \(String(describing: dateKey))")
@@ -83,7 +83,7 @@ func customDateFormatter(_ decoder: Decoder) throws -> Date {
                         completion(nil, NSError(domain: errorDomain, code: 1, userInfo: [NSLocalizedDescriptionKey: "Decoding error \(String(describing: error))"]))
                         return
                     }
-                    completion(nil, NSError(domain: errorDomain, code: RPCErrorResponse.ErrorCode, userInfo: [NSLocalizedDescriptionKey: "Blockchain error \(String(errorResponse.errorDescription()))"]))
+                    completion(nil, NSError(domain: errorDomain, code: RPCErrorResponse.ErrorCode, userInfo: [RPCErrorResponse.ErrorKey: errorResponse]))
                     return
                 }
                 completion(responseObject, error)

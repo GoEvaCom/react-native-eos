@@ -2,10 +2,7 @@
 #import "RNEosEcc.h"
 
 @interface RCT_EXTERN_REMAP_MODULE(RNEosEcc, Entrypoint, NSObject)
-RCT_EXTERN_METHOD(
-                  getInfo:(RCTPromiseResolveBlock)resolve
-                  rejecter:(RCTPromiseRejectBlock)reject
-                 )
+RCT_EXTERN_METHOD(getInfo: (RCTResponseSenderBlock)callback)
 RCT_EXTERN_METHOD(
                   setUrl:(nonnull NSString *)scheme
                   urlSent:(nonnull NSString *)urlSent

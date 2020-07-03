@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B5E902B24ACEFA400577DC5 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B8447F824ABBC8F00C52AD8 /* CoreFoundation.framework */; };
+		0B8447F724ABAA4900C52AD8 /* EntrypointObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8447F624ABAA4900C52AD8 /* EntrypointObjC.m */; };
 		5C3E67FE21F6527800797FFD /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E67FD21F6527800797FFD /* PrivateKey.swift */; };
 		5C3E680021F652C800797FFD /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E67FF21F652C800797FFD /* Crypto.swift */; };
 		5C3E681821F6538C00797FFD /* curve-specific.inc in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E680321F6538B00797FFD /* curve-specific.inc */; };
@@ -46,7 +48,6 @@
 		5C3E684B21F658C800797FFD /* uECC.c in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E683D21F658C700797FFD /* uECC.c */; };
 		5C3E684C21F658C800797FFD /* ripemd160.c in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E683E21F658C700797FFD /* ripemd160.c */; };
 		5C3E684D21F658C800797FFD /* pbkdf2.c in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E683F21F658C700797FFD /* pbkdf2.c */; };
-		5C3E684E21F658C800797FFD /* bip39.c in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E684021F658C800797FFD /* bip39.c */; };
 		5C3E684F21F658C800797FFD /* bignum.c in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E684121F658C800797FFD /* bignum.c */; };
 		5C3E685021F658C800797FFD /* curves.c in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E684221F658C800797FFD /* curves.c */; };
 		5C3E685421F659A700797FFD /* curve-specific.inc in Sources */ = {isa = PBXBuildFile; fileRef = 5C3E685221F659A700797FFD /* curve-specific.inc */; };
@@ -87,6 +88,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B8447F524ABA85400C52AD8 /* EntrypointObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EntrypointObjC.h; sourceTree = "<group>"; };
+		0B8447F624ABAA4900C52AD8 /* EntrypointObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EntrypointObjC.m; sourceTree = "<group>"; };
+		0B8447F824ABBC8F00C52AD8 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		134814201AA4EA6300B7C361 /* libRNEosEcc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNEosEcc.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3E67F321F64DE500797FFD /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C3E67F521F64DF100797FFD /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,7 +135,6 @@
 		5C3E683D21F658C700797FFD /* uECC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = uECC.c; sourceTree = "<group>"; };
 		5C3E683E21F658C700797FFD /* ripemd160.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ripemd160.c; sourceTree = "<group>"; };
 		5C3E683F21F658C700797FFD /* pbkdf2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pbkdf2.c; sourceTree = "<group>"; };
-		5C3E684021F658C800797FFD /* bip39.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bip39.c; path = ../../../SwiftyEOS/Libraries/src/bip39.c; sourceTree = "<group>"; };
 		5C3E684121F658C800797FFD /* bignum.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bignum.c; sourceTree = "<group>"; };
 		5C3E684221F658C800797FFD /* curves.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = curves.c; sourceTree = "<group>"; };
 		5C3E685121F6597B00797FFD /* secp256k1.table */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = secp256k1.table; sourceTree = "<group>"; };
@@ -170,6 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B5E902B24ACEFA400577DC5 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +191,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				0B8447F624ABAA4900C52AD8 /* EntrypointObjC.m */,
+				0B8447F524ABA85400C52AD8 /* EntrypointObjC.h */,
 				5C3E688521F67B9900797FFD /* AnyEncodable.swift */,
 				5C3E688321F67B8200797FFD /* AnyDecodable.swift */,
 				5C3E688121F67B6A00797FFD /* AnyCodable.swift */,
@@ -213,7 +219,6 @@
 				5C3E683C21F658C700797FFD /* base58.c */,
 				5C3E684121F658C800797FFD /* bignum.c */,
 				5C3E683921F658C700797FFD /* bip32.c */,
-				5C3E684021F658C800797FFD /* bip39.c */,
 				5C3E684221F658C800797FFD /* curves.c */,
 				5C3E683621F658C600797FFD /* ecdsa.c */,
 				5C3E683521F658C600797FFD /* hmac.c */,
@@ -263,6 +268,7 @@
 		5CCAB3FD21F645BC007F9F09 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B8447F824ABBC8F00C52AD8 /* CoreFoundation.framework */,
 				5C3E687F21F67A5E00797FFD /* AnyCodable.framework */,
 				5C3E67FB21F651E900797FFD /* Pods_appEosRn.framework */,
 				5C3E67F721F64ED300797FFD /* RxCocoa.framework */,
@@ -314,6 +320,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
@@ -350,6 +357,7 @@
 				5C3E682021F6540500797FFD /* ecdsa.h in Sources */,
 				5C3E682121F6540500797FFD /* hmac.h in Sources */,
 				5C3E682221F6540500797FFD /* libbase58.h in Sources */,
+				0B8447F724ABAA4900C52AD8 /* EntrypointObjC.m in Sources */,
 				5C3E684921F658C800797FFD /* sha2.c in Sources */,
 				5C3E683421F6580200797FFD /* bip39.c in Sources */,
 				5C3E688621F67B9900797FFD /* AnyEncodable.swift in Sources */,
@@ -375,7 +383,6 @@
 				5C3E685E21F66D7800797FFD /* AccountUtil.swift in Sources */,
 				5C3E687A21F66DC700797FFD /* EOSRPC+History.swift in Sources */,
 				5C3E684D21F658C800797FFD /* pbkdf2.c in Sources */,
-				5C3E684E21F658C800797FFD /* bip39.c in Sources */,
 				5C3E683221F656DE00797FFD /* PublicKey.swift in Sources */,
 				5C3E682E21F6540500797FFD /* uECC.h in Sources */,
 				5C3E684421F658C800797FFD /* ecdsa.c in Sources */,
@@ -405,6 +412,7 @@
 		58B511ED1A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -430,6 +438,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -450,13 +459,16 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_MODULE_NAME = RNEosEcc;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNEosEcc-Bridging-Header";
 			};
 			name = Debug;
 		};
 		58B511EE1A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -482,6 +494,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -494,8 +507,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_MODULE_NAME = RNEosEcc;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNEosEcc-Bridging-Header";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -503,6 +518,7 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -525,6 +541,7 @@
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

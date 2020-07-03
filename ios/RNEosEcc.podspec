@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.description  = <<-DESC
                   RNEosEcc
                    DESC
-  s.homepage     = "https://github.com/EvaCoop/react-native-eos"
+  s.homepage     = ""
   s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
   s.author             = { "author" => "raphael.gaudreault@eva.coop" }

@@ -10,9 +10,10 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
   s.author             = { "author" => "raphael.gaudreault@eva.coop" }
-  s.platform     = :ios, "7.0"
-  s.source       = { :git => "https://github.com/author/RNEosEcc.git", :tag => "master" }
-  s.source_files  = "RNEosEcc/**/*.{h,m}"
+  s.platform     = :ios, "8.0"
+  s.source       = { :path => "ios" }
+  s.source_files  = "ios/**/*.{h,m,swift,inc,table,c}"
+  s.exclude_files = "ios/Libraries/include/asm_arm.inc.h"
   s.requires_arc = true
 
 

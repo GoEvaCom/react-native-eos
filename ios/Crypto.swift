@@ -98,15 +98,13 @@ extension String {
         var bin = [UInt8](repeating: 0, count: source.count)
         
         var size = bin.count
-        var success = source.withUnsafeBytes { (sourceBytes: UnsafePointer<CChar>) -> Bool in
+        let success = source.withUnsafeBytes { (sourceBytes: UnsafePointer<CChar>) -> Bool in
             if se_b58tobin(&bin, &size, sourceBytes, source.count) {
                 bin = Array(bin[(bin.count - size)..<bin.count])
                 return se_b58check(bin, size, sourceBytes, source.count) == Int32(version)
             }
             return false
         }
-
-        success = true
         
         if success {
             return Data(bytes: bin[1..<(bin.count-4)])

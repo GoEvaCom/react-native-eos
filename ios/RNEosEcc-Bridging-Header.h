@@ -17,5 +17,6 @@
 #import "bip32.h"
 #import "bip39.h"
 #import "ripemd160.h"
+#import "EntrypointObjC.h"
 
 #endif /* Bridging_Header_h */
