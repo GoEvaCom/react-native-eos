@@ -97,7 +97,9 @@ public class EosCommanderApp extends Application {
                         String pushTxnResponseString = gson.toJson(pushTxnResponse);
                         promise.resolve(pushTxnResponseString);
                     } catch(Exception e){
-                        promise.reject("ERR_UNEXPECTED_EXCEPTION", e);
+                        if (promise != null) {
+                            promise.reject("ERR_UNEXPECTED_EXCEPTION", e);
+                        }
                     }
                 }
 
@@ -106,12 +108,18 @@ public class EosCommanderApp extends Application {
                     if (e instanceof HttpException) {
                         ResponseBody body = ((HttpException) e).response().errorBody();
                         try {
-                            promise.reject(body.string());
+                            if (promise != null) {
+                                promise.reject(body.string());
+                            }
                         } catch (Exception ex) {
-                            promise.reject("ERR_UNEXPECTED_EXCEPTION: Problem with the blockchain. No info available.");
+                            if (promise != null) {
+                                promise.reject("ERR_UNEXPECTED_EXCEPTION: Problem with the blockchain. No info available.");
+                            }
                         }
                     } else {
-                        promise.reject("ERR_UNEXPECTED_EXCEPTION: Not an error with the blockchain. Probably an error in react native code. Please refer to react-native-eos github page for more info.");
+                        if (promise != null) {
+                            promise.reject("ERR_UNEXPECTED_EXCEPTION: Not an error with the blockchain. Probably an error in react native code. Please refer to react-native-eos github page for more info.");
+                        }
                     }
                     
                 }
