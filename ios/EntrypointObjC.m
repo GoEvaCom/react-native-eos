@@ -18,6 +18,11 @@
 #else
 #import <React/RCTLog.h>
 #endif
+#if __has_include("RCTEventDispatcher.h")
+#import "RCTEventDispatcher.h"
+#else
+#import <React/RCTEventDispatcher.h>
+#endif
 
 @implementation EntrypointObjC
 
@@ -55,9 +60,19 @@ NSString *_privateKeyString;
     _message = message;
 }
 
--(void)pushAction
+-(void)pushAction:(RCTResponseSenderBlock)success failure:(RCTResponseSenderBlock)failure
 {
-    [entrypoint pushActionObjC:_contract_account action:_action message:_message permissionAccount:_permissionAccount permissionType:_permissionType privateKeyString:_privateKeyString callback:^(NSString* response) { RCTLogInfo(@"%@", [NSString stringWithFormat:@"RCTBackgroundGeolocation Chain Response: %@", response]); }];
+    [entrypoint pushActionObjC:_contract_account action:_action message:_message permissionAccount:_permissionAccount permissionType:_permissionType privateKeyString:_privateKeyString callback:^(NSString* response) {
+        if ([response rangeOfString:@"Blockchain error"].location == NSNotFound) {
+            if (success != nil) {
+                success(@[response]);
+            }
+        } else {
+            if (failure != nil) {
+                failure(@[response]);
+            }
+        }
+    }];
 }
  
 @end
