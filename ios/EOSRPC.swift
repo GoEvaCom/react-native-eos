@@ -56,7 +56,7 @@ func customDateFormatter(_ decoder: Decoder) throws -> Date {
     
     var decoder: JSONDecoder {
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .custom(customDateFormatter)
+        //decoder.dateDecodingStrategy = .custom(customDateFormatter)
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         return decoder
     }
