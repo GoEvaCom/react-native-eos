@@ -14,7 +14,7 @@
 -(void)setUrl:(NSString*)scheme url:(NSString*)url port:(NSNumber*)port;
 -(void)setTransactionInfo:(NSString*)contract_account action:(NSString*)action permissionAccount:(NSString*)permissionAccount permissionType:(NSString*)permissionType privateKeyString:(NSString*)privateKeyString;
 -(void)setMessage:(NSString*)message;
--(void)pushAction;
+-(void)pushAction:(RCTResponseSenderBlock)success failure:(RCTResponseSenderBlock)failure;
 
 @end
 
